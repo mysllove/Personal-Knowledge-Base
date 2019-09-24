@@ -1,15 +1,24 @@
 <template>
   <div class="homepage-hero-module">
     <div class="video-container">
-      <div :style="fixStyle" class="filter"></div>
-      <video :style="fixStyle" autoplay loop class="fillWidth" @canplay="canplay">
-        <source src="@/assets/mp4/screen.mp4" type="video/mp4" />
+      <div :style="fixStyle"
+           class="filter"></div>
+      <video :style="fixStyle"
+             autoplay
+             loop
+             class="fillWidth"
+             @canplay="canplay">
+        <source src="@/assets/mp4/Zhangjiajie.mp4"
+                type="video/mp4">
         浏览器不支持 video 标签，建议升级浏览器。
-        <source src="@/assets/mp4/screen.webm" type="video/webm" />
-        浏览器不支持 video 标签，建议升级浏览器。
+        <!-- <source src="@/assets/mp4/screen.webm" type="video/webm">
+        浏览器不支持 video 标签，建议升级浏览器。 -->
       </video>
-      <div v-if="!vedioCanPlay" class="poster hidden">
-        <img :style="fixStyle" src="@/assets/mp4/screen.jpg" alt="" />
+      <div v-if="!vedioCanPlay"
+           class="poster hidden">
+        <img :style="fixStyle"
+             src="@/assets/mp4/screen.jpg"
+             alt="">
       </div>
     </div>
   </div>

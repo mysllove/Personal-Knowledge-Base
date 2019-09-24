@@ -14,14 +14,18 @@ module.exports = {
     // add your custom rules here
     //it is base on https://github.com/vuejs/eslint-config-vue
     rules: {
-        'vue/max-attributes-per-line': [
-            2,
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": 1,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": true
+            }
+        }],
+        'vue/html-closing-bracket-newline': [
+            'error',
             {
-                singleline: 10,
-                multiline: {
-                    max: 1,
-                    allowFirstLine: false
-                }
+                singleline: 'never',
+                multiline: 'never'
             }
         ],
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -259,7 +263,15 @@ module.exports = {
             2,
             'always',
             {
-                markers: ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
+                markers: [
+                    'global',
+                    'globals',
+                    'eslint',
+                    'eslint-disable',
+                    '*package',
+                    '!',
+                    ','
+                ]
             }
         ],
         'template-curly-spacing': [2, 'never'],

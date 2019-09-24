@@ -2,22 +2,22 @@
   <div class="warpper">
     <Video />
     <div class="login-container">
-      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+      <el-form ref="loginForm"
+               :model="loginForm"
+               :rules="loginRules"
+               class="login-form"
+               auto-complete="on"
+               label-position="left">
         <div class="title-container">
           <h3 class="title">
-            <svg width="100%" height="80">
-              <text text-anchor="middle" x="50%" y="80%" class="text text-1">
-                就此燃尽
-              </text>
-              <text text-anchor="middle" x="50%" y="80%" class="text text-2">
-                就此燃尽
-              </text>
-              <text text-anchor="middle" x="50%" y="80%" class="text text-3">
-                就此燃尽
-              </text>
-              <text text-anchor="middle" x="50%" y="80%" class="text text-4">
-                就此燃尽
-              </text>
+            <svg width="100%"
+                 height="80">
+              <text text-anchor="middle"
+                    x="50%"
+                    y="80%"
+                    v-for="(textValue,index) in text"
+                    :key="index"
+                    :class="[textClass,textClass+'-'+(index+1)]">{{textValue.message}}</text>
             </svg>
           </h3>
         </div>
@@ -26,34 +26,41 @@
           <span class="svg-container">
             <svg-icon icon-class="user" />
           </span>
-          <el-input ref="username" v-model="loginForm.username" placeholder="Username" name="username" type="text" tabindex="1" auto-complete="on" />
+          <el-input ref="username"
+                    v-model="loginForm.username"
+                    placeholder="Username"
+                    name="username"
+                    type="text"
+                    tabindex="1"
+                    auto-complete="on" />
         </el-form-item>
 
         <el-form-item prop="password">
           <span class="svg-container">
             <svg-icon icon-class="password" />
           </span>
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            placeholder="Password"
-            name="password"
-            tabindex="2"
-            auto-complete="on"
-            @keyup.enter.native="handleLogin"
-          />
-          <span class="show-pwd" @click="showPwd">
+          <el-input :key="passwordType"
+                    ref="password"
+                    v-model="loginForm.password"
+                    :type="passwordType"
+                    placeholder="Password"
+                    name="password"
+                    tabindex="2"
+                    auto-complete="on"
+                    @keyup.enter.native="handleLogin" />
+          <span class="show-pwd"
+                @click="showPwd">
             <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
         </el-form-item>
 
-        <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
-
+        <el-button :loading="loading"
+                   type="primary"
+                   style="width:100%;margin-bottom:30px;"
+                   @click.native.prevent="handleLogin">Login</el-button>
         <div class="tips">
           <span style="margin-right:20px;">username: admin</span>
-          <span> password: any</span>
+          <span>password: any</span>
         </div>
       </el-form>
     </div>
@@ -82,14 +89,26 @@ export default {
         callback()
       }
     }
+    const thisValue = '就此燃尽'
     return {
       loginForm: {
         username: 'admin',
         password: '111111'
       },
+      textClass: 'text',
+      text: [
+        { message: thisValue },
+        { message: thisValue },
+        { message: thisValue },
+        { message: thisValue }
+      ],
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [
+          { required: true, trigger: 'blur', validator: validateUsername }
+        ],
+        password: [
+          { required: true, trigger: 'blur', validator: validatePassword }
+        ]
       },
       loading: false,
       passwordType: 'password',
