@@ -12,11 +12,11 @@
           <h3 class="title">
             <svg width="100%"
                  height="80">
-              <text text-anchor="middle"
+              <text v-for="(textValue,index) in text"
+                    :key="index"
+                    text-anchor="middle"
                     x="50%"
                     y="80%"
-                    v-for="(textValue,index) in text"
-                    :key="index"
                     :class="[textClass,textClass+'-'+(index+1)]">{{textValue.message}}</text>
             </svg>
           </h3>
@@ -187,10 +187,9 @@ $cursor: #fff;
       color: $light_gray;
       height: 47px;
       caret-color: $cursor;
-
       &:-webkit-autofill {
-        box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: $cursor !important;
+        -webkit-text-fill-color: #ffffff !important;
+        transition: background-color 5000s ease-in-out 0s !important;
       }
     }
   }
@@ -201,6 +200,10 @@ $cursor: #fff;
     border-radius: 5px;
     color: #454545;
   }
+}
+.el-input__inner:hover {
+  cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur),
+    auto;
 }
 </style>
 

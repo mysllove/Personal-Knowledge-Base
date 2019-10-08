@@ -1,6 +1,8 @@
 <template>
   <div class="functionSet">
     <saying />
+    <div class="introduce">
+    </div>
   </div>
 </template>
 
@@ -8,7 +10,13 @@
 import Saying from './components/Saying'
 export default {
   name: 'Function',
-  components: { Saying }
+  components: { Saying },
+  data() {
+    return {
+      fixStyle: { height: '180px', display: 'block' },
+      input: ''
+    }
+  }
 }
 </script>
 <style>
