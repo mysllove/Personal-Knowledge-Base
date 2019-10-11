@@ -19,7 +19,8 @@
             <div v-for="(synopsis,index) in card.tips"
                  :key="synopsis.index"           
                  class="text item">
-                 <div v-html="card.tips[index].emphasis"></div>         
+                 <div class="synopsisRow"><i :class="synopsis.emphasisIcon"></i><span v-html="card.tips[index].emphasis"></span></div>
+                    
             </div>
           </el-card>
         </div>
@@ -43,7 +44,8 @@
 }
 
 .item {
-  margin-bottom: 18px;
+  margin-bottom: 10px;
+  line-height: 20px;
 }
 
 .clearfix:before,
@@ -57,6 +59,11 @@
 .orange-m{
   color:orange
 }
+.synopsisRow>i{
+  margin-right: 5px;
+  width: 16px;
+    height: 16px;
+}
 </style>>
 
 <script>
@@ -67,13 +74,16 @@ export default {
         {
           title: 'vue介绍',
           tips: [
-            { emphasis: 'Vue是一套用于构建用户界面的<span style="color:#409EFF">渐进式框架</span>'},
-            { emphasis: '2' },
-            { emphasis: '3' }
+            { emphasis: 'Vue是一套用于构建用户界面的<span style="color:#409EFF">渐进式框架</span>',emphasisIcon:'el-icon-star-off'},
+            { emphasis: 'Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件',emphasisIcon:'iconfont sanylAb' },
+            { emphasis: '......',emphasisIcon:'iconfont sanylAc' }
           ]
         }
       ],
     }
+   },
+   methods:{
+   
    }
    }
 
