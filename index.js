@@ -29,6 +29,7 @@ router.post("/api/count", async (ctx) => {
 
   ctx.body = {
     code: 0,
+    ss:2,
     data: await Counter.count(),
   };
 });
